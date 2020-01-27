@@ -17,31 +17,7 @@ from dash.dependencies import Input, Output
 from dash.exceptions import PreventUpdate
 from plotly import graph_objects as go
 from Traffic_View_Class import Traffic_View as TV
-"""
-filename = 'Daily Turnstile nov & Dec -rev1.xlsx'
-sheetname1 = 'November'
-sheetname2 = 'December '
 
-Traffic_Nov = TV.Clean_Traffic(filename, sheetname1)
-Traffic_Dec = TV.Clean_Traffic(filename, sheetname2)
-
-
-data = TV.appending_months(Traffic_Nov, Traffic_Dec)
-print(data.columns)
-"""
-"""
-filename = 'Daily Turnstile 3-temp.xlsx'
-sheetname1 = 'November'
-sheetname2 = 'December '
-sheetname3 = 'Jan 2020'
-Traffic_Nov = TV.Clean_Traffic(filename, sheetname1)
-Traffic_Dec = TV.Clean_Traffic(filename, sheetname2) 
-Traffic_Jan = TV.Clean_Traffic(filename, sheetname3)
-
-Traffic_Nov_Dec = TV.appending_months(Traffic_Nov, Traffic_Dec)
-data = TV.appending_months(Traffic_Nov_Dec, Traffic_Jan)
-print(data.columns)
-"""
 
 data = pd.read_excel('FootTrafficUpdate.xlsx')
 data = data.drop(columns = 'Unnamed: 0')
@@ -54,8 +30,6 @@ data.drop(indexNames , inplace=True)
 image_saco = 'saco_logo.jpg'
 image_17 = '17.png'
 
-#encoded_image_saco = base64.b64encode(open(image_saco, 'rb').read())
-#encoded_image_17 = base64.b64encode(open(image_17, 'rb').read())
 
 for i in range(data.shape[0]):
     if data.iloc[i,5] == 1:
@@ -146,9 +120,9 @@ app.layout = html.Div([
        
     dbc.Row([html.Br(), html.Br(),
              dbc.Col(lg=1),
-             dbc.Col([html.Img(src=app.get_asset_url('saco_logo.png'))], lg= 1),
+             #dbc.Col([html.Img(src=app.get_asset_url('saco_logo.png'))], lg= 1),
              dbc.Col([html.Br(), html.Br(), html.Div([html.P("SACO Foot Traffic Dashboard")], style={'textAlign': "center", 'font-size':'300%', 'font-family':'Roboto Condensed', 'font-weight': 'bold'})]),  
-             dbc.Col([html.Img(src=app.get_asset_url('17.png'))], lg= 1),
+             #dbc.Col([html.Img(src=app.get_asset_url('17.png'))], lg= 1),
              dbc.Col(lg=1)
               ]),
 
